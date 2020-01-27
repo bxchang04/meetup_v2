@@ -1,0 +1,15 @@
+service: auth-server
+
+provider:
+  name: aws
+  runtime: nodejs12.14
+  region: eu-central-1
+  timeout: 60
+
+functions:
+  getAccessToken:
+    handler: handler.getAccessToken
+    events:
+      - http:
+          path: api/token
+          method: get
