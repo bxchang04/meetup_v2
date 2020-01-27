@@ -9,7 +9,7 @@ module.exports.getAccessToken = async (event) => {
     + '&client_secret=v1A/UF3x+u2vzYrj5AsIS5frj+Z9gmdPCgd6qSsy'
     + '&grant_type=authorization_code'
     + '&redirect_uri=https://bxchang04.github.io/meetup_v2'
-    + '&code=04c4c6dd3e1abd3e6677e67058bdfb45';
+    + '&code=c8a8e7ff01bf484ac14c2933cde92880';
 
   const info = await axios.post(MEETUP_OAUTH_URL);
 
