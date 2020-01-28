@@ -9,12 +9,15 @@ module.exports.getAccessToken = async (event) => {
     + '&client_secret=eubts7ml852ltfal2m5kiidta7'
     + '&grant_type=authorization_code'
     + '&redirect_uri=https://bxchang04.github.io/meetup_v2'
-    + '&code=dbe12ed8f2d65e8f1a790cc01d519a54';
+    + '&code=' + event.pathParameters.code;
 
   const info = await axios.post(MEETUP_OAUTH_URL);
 
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    },
     body: JSON.stringify({
       access_token: info.data.access_token,
       refresh_token: info.data.refresh_token,

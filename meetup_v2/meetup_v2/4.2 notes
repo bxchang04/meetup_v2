@@ -2,7 +2,7 @@ Prior to authorization:
 https://secure.meetup.com/oauth2/authorize?client_id=
 
 Full
-https://secure.meetup.com/oauth2/authorize?client_id=3dssascu6mej4fuptij43jdbh4&response_type=code&redirect_uri=https://bxchang04.github.io/meetup_v2/meetup_v2
+https://secure.meetup.com/oauth2/authorize?client_id=3dssascu6mej4fuptij43jdbh4&response_type=code&redirect_uri=https://bxchang04.github.io/meetup_v2
 
 Consumer key:
 3dssascu6mej4fuptij43jdbh4
@@ -15,10 +15,10 @@ Consumer redirect_URI:
 https://bxchang04.github.io/meetup_v2/
 
 auth code (1/27/2020)
-c7feef33ce2cd161f2ee4b7355ceedbe
+12e485a668c2136c6f6b07813daa986e
 
 
-https://bxchang04.github.io/meetup_v2/?code=c7feef33ce2cd161f2ee4b7355ceedbe
+https://bxchang04.github.io/meetup_v2/?code=12e485a668c2136c6f6b07813daa986e
 
 AWS
 serverless config credentials --provider aws --key AKIAIVDZNJOFD43NKQXQ --secret SECRET_ACCESS_KEY
