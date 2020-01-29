@@ -15,9 +15,9 @@ functions:
       - http:
           path: api/token/{code}
           method: get
-    refreshAccessToken:
-      handler: handler.refreshAccessToken
-      events:
-        - http:
-            path: api/token/{code}
-            method: post
+  refreshAccessToken:
+    handler: handler.refreshAccessToken
+    events:
+      - http:
+          path: api/refresh/{code}
+          method: get
