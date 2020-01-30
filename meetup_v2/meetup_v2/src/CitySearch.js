@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getSuggestions } from './api';
 
 class CitySearch extends Component {
 
@@ -6,10 +7,11 @@ class CitySearch extends Component {
     query: '',
     suggestions: [],
   }
-  
+
   handleInputChanged = (event) => {
     const value = event.target.value;
     this.setState({ query: value });
+    getSuggestions(value).then(suggestions => this.setState({ suggestions }));
   }
 
   handleItemClicked = (value) => {
