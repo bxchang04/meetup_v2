@@ -4,7 +4,7 @@ import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
-// import { mockEvents } from '../mock-events';
+import { mockEvents } from '../mock-events';
 
 describe('<App /> component', () => {
 
@@ -35,5 +35,20 @@ describe('<App /> integration', () => {
     CitySearchWrapper.instance().handleItemClicked('value', 1.1, 1.2);
     expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
     expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(1.1, 1.2);
-    });
+    AppWrapper.unmount();
+  });
+
+  test('change state after get list of events', async () => {
+    const AppWrapper = shallow(<App />);
+    AppWrapper.instance().updateEvents(1.1, 1.2);
+    await AppWrapper.update();
+    expect(AppWrapper.state('events')).toEqual(mockEvents.events);
+  });
+
+  test('render correct list of events', () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.setState({ events: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }] });
+    expect(AppWrapper.find('.Event')).toHaveLength(4);
+    AppWrapper.unmount();
+  });
 });
