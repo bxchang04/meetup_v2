@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from '../App';
-
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
+// import { mockEvents } from '../mock-events';
 
 describe('<App /> component', () => {
 
@@ -26,13 +26,13 @@ describe('<App /> component', () => {
   });
 });
 
-// describe('<App /> integration', () => {
-//   test('get list of events after user selects a city', async () => {
-//   const AppWrapper = mount(<App />);
-//   AppWrapper.instance().updateEvents = jest.fn();
-//   AppWrapper.instance().forceUpdate();
-//   const CitySearchWrapper = AppWrapper.find(CitySearch);
-//   CitySearchWrapper.instance().handleItemClicked('value');
-//   expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
-//   });
-// });
+describe('<App /> integration', () => {
+  test('get list of events after user selects a city', async () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.instance().updateEvents = jest.fn();
+    AppWrapper.instance().forceUpdate();
+    const CitySearchWrapper = AppWrapper.find(CitySearch);
+    CitySearchWrapper.instance().handleItemClicked('value');
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
+    });
+});
