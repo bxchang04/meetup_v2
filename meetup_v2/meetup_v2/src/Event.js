@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Event extends Component {
   state = {
-    event: {},
+    event: {}, //not needed?
     showDetails: false
   }
 

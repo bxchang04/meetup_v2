@@ -43,6 +43,7 @@ describe('<App /> integration', () => {
     AppWrapper.instance().updateEvents(1.1, 1.2);
     await AppWrapper.update();
     expect(AppWrapper.state('events')).toEqual(mockEvents.events);
+    AppWrapper.unmount();
   });
 
   test('render correct list of events', () => {
