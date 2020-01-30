@@ -43,13 +43,12 @@ describe('<App /> integration', () => {
     AppWrapper.instance().updateEvents(1.1, 1.2);
     await AppWrapper.update();
     expect(AppWrapper.state('events')).toEqual(mockEvents.events);
-    AppWrapper.unmount();
   });
 
   test('render correct list of events', () => {
     const AppWrapper = mount(<App />);
     AppWrapper.setState({ events: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }] });
-    expect(AppWrapper.find('.Event')).toHaveLength(4);
+    expect(AppWrapper.find('.event')).toHaveLength(4);
     AppWrapper.unmount();
   });
 });
