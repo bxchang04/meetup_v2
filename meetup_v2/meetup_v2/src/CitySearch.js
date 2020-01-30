@@ -16,6 +16,7 @@ class CitySearch extends Component {
 
   handleItemClicked = (value) => {
     this.setState({ query: value });
+    this.props.updateEvents();
   }
 
   render() {

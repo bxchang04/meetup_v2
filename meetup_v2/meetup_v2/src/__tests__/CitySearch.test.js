@@ -7,6 +7,7 @@ describe('<CitySearch /> component', () => {
   let CitySearchWrapper;
   beforeAll(() => {
     CitySearchWrapper = shallow(<CitySearch />);
+    // CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}}/>); //one of the repos did this
   });
 
   test('render text input', () => {
@@ -37,6 +38,7 @@ describe('<CitySearch /> component', () => {
   });
 
   test('click on suggestion should change query state', () => {
+    CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}}/>);
     CitySearchWrapper.setState({
       suggestions: [
         {
