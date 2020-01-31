@@ -39,7 +39,7 @@ const mockEvents = {
         zip: '02138',
         state: 'MA'
       },
-      'group': {
+      group: {
         created: 1343594111000,
         name: 'Cambridge Buddhist Meditation Group',
         id: 4420182,
