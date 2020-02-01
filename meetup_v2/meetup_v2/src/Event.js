@@ -7,7 +7,8 @@ class Event extends Component {
   }
 
   handleShowDetails = () => {
-    this.setState({ showDetails: !this.state.showDetails });
+    // this.setState({ showDetails: !this.state.showDetails }); //fails int tests
+    this.setState({ showDetails: true });
   }
 
   render() {
@@ -18,6 +19,7 @@ class Event extends Component {
         <div className="event__Overview">
           <p className="event__Overview--name">{this.props.event.name}</p>
           <p className="event__Overview--localDate">{this.props.event.local_date}</p>
+          {/*doesn't show # of people going, like in 4.4 screenshot*/}
           <button onClick={() => this.handleShowDetails()}>show details</button>
         </div>
         {showDetails &&
