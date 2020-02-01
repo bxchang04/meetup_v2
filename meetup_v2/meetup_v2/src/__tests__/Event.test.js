@@ -12,7 +12,7 @@ describe('<Event /> component', () => {
     EventWrapper = shallow(<Event />);
   });
 
-  test('test that componet is rendered', () => {
+  test('test that component is rendered', () => {
     expect(EventWrapper).toHaveLength(1);
   });
 
