@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> <title>Test Server</title>
+  </head>
+  <body>
+    <div id="container">
+      <input id="code" type="text" placeholder="code" />
+      <button id="getToken">Get Token</button>
+      <p id="result"></p>
+    </div>
+    <div id="container_refresh">
+      <input id="refreshCode" type="text" placeholder="refresh token" />
+      <button id="refreshToken">Refresh Token</button>
+      <p id="refreshResult"></p>
+    </div>
+
+          <script type="text/javascript">
+            const getTokenElement = document.getElementById('getToken');
+            getTokenElement.onclick = function() {
+              const codeElement = document.getElementById('code');
+              const resultElement = document.getElementById('result');
+              const codeValue =  codeElement.value;
+
+              // Replace this by your function endpoint
+              const lambdaURL = 'https://b5zart0jw7.execute-api.eu-central-1.amazonaws.com/dev/api/token/' + codeValue;
+
+              fetch(lambdaURL)
+                .then(function(response) {
+                  return response.json();
+                })
+                .then(function(json) {
+                  resultElement.innerText = JSON.stringify(json);
+                });
+            }
+
+            //refresh script
+            const getRefreshElement = document.getElementById('refreshToken');
+            getRefreshElement.onclick = function() {
+              const codeElement = document.getElementById('refreshCode');
+              const resultElement = document.getElementById('refreshResult');
+              // const refreshCodeValue =  refreshCodeElement.value;
+              const codeValue =  codeElement.value;
+
+              // Replace this by your function endpoint
+              const lambdaURL = 'https://b5zart0jw7.execute-api.eu-central-1.amazonaws.com/dev/api/refresh/' + codeValue;
+
+              fetch(lambdaURL)
+                .then(function(response) {
+                  return response.json();
+                })
+                .then(function(json) {
+                  resultElement.innerText = JSON.stringify(json);
+                });
+            }
+
+          </script>
+        </body>
+      </html>
