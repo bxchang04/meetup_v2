@@ -95,10 +95,7 @@ describe('<Event /> component', () => {
     EventWrapper.setState({
       showDetails: false
     });
-  // test('click on button should show details', () => {
-  //   EventWrapper = shallow(<Event prop={{showDetails: false}}/>)
-  //   EventWrapper.find('.event__Overview button').simulate('click');
+    EventWrapper.find('.event__Overview button').simulate('click');
     expect(EventWrapper.state('showDetails')).toBe(true);
-    // expect(EventWrapper.props('showDetails')).toBe(true);
   });
 });
