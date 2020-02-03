@@ -24,6 +24,7 @@ async function getSuggestions(query) {
         lon: -98.85
       }
     ];
+  }
 
   const token = await getAccessToken();
   if (token) {
