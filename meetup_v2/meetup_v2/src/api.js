@@ -68,16 +68,18 @@ async function getAccessToken(){
       return null;
     }
 
-    const lastSavedTime = localStorage.getItem('last_saved_time');
-
-    if (accessToken && (Date.now() - lastSavedTime < 3600000)) {
-      return accessToken;
-    }
-
-    const refreshToken = localStorage.getItem('refresh_token');
-
-    return getOrRenewAccessToken('renew', refreshToken);
+    return getOrRenewAccessToken('get', code);
   }
+
+  const lastSavedTime = localStorage.getItem('last_saved_time');
+
+  if (accessToken && (Date.now() - lastSavedTime < 3600000)) {
+    return accessToken;
+  }
+
+  const refreshToken = localStorage.getItem('refresh_token');
+
+  return getOrRenewAccessToken('renew', refreshToken);
 }
 
 async function getOrRenewAccessToken(type, key) {
