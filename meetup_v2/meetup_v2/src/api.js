@@ -24,7 +24,6 @@ async function getSuggestions(query) {
         lon: -98.85
       }
     ];
-  }
 
   const token = await getAccessToken();
   if (token) {
@@ -54,6 +53,7 @@ async function getEvents(lat, lon) {
     const result = await axios.get(url);
     return result.data.events;
   }
+}
 
 async function getAccessToken(){
   const accessToken = localStorage.getItem('access_token');
@@ -93,7 +93,6 @@ async function getOrRenewAccessToken(type, key) {
 
   // Return the access_token
   return tokenInfo.data.access_token;
-  }
 }
 
 export { getSuggestions, getEvents };
