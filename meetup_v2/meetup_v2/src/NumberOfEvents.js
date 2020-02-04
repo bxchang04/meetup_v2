@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ErrorAlert } from './Alert';
 
 class NumberOfEvents extends Component {
 
@@ -10,7 +11,18 @@ class NumberOfEvents extends Component {
     const value = event.target.value;
     this.setState({ numberOfEvents: value });
     this.props.updateEvents(null, null, value);
+
+    if (value < 1) {
+      this.setState({
+        infoText: 'Number should be at least 1',
+      });
+    } else {
+      this.setState({
+        infoText: '',
+      });
+    }
   }
+
 
   render() {
     return(
@@ -22,6 +34,7 @@ class NumberOfEvents extends Component {
           value={this.state.numberOfEvents}
           onChange={this.handleInputChanged}
         />
+        <ErrorAlert text={this.state.infoText} />
       </div>
     );
   }
