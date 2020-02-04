@@ -1,3 +1,6 @@
+//what are $ for?
+//.details-btn <-- if uncommented, breaks app
+
 import puppeteer from 'puppeteer';
 
 describe('show/hide an event details', () => {
@@ -7,7 +10,7 @@ describe('show/hide an event details', () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
     await page.goto('http://localhost:3000/');
-    await page.waitForSelector('.Event');
+    await page.waitForSelector('.event');
   });
 
   afterAll(() => {
@@ -15,14 +18,21 @@ describe('show/hide an event details', () => {
   });
 
   test('An event element is collapsed by default', async () => {
-    const extra = await page.$('.Event .extra');
+    const extra = await page.$('.event .event__Details');
     expect(extra).toBeNull();
   });
 
   test('User can expand an event to see its details', async () => {
-    await page.click('.Event .details-btn');
+    await page.click('.event .details-btn');
 
-    const extra = await page.$('.Event .extra');
+    const extra = await page.$('.event .event__Details');
     expect(extra).toBeDefined();
+  });
+
+  test('User can collapse an event to hide its details', async () => {
+    await page.click('.event .details-btn');
+
+    const extra = await page.$('.event .event__Details');
+    expect(extra).toBeNull();
   });
 });
