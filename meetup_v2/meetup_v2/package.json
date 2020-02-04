@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://bxchang04.github.io/meetup_v2",
   "dependencies": {
+    "atatus-js": "^4.0.4",
     "axios": "^0.19.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
