@@ -1,3 +1,6 @@
+//changed E to e
+//details-btn in App.js has been removed
+
 import React from 'react';
 import { mount } from 'enzyme';
 import { loadFeature, defineFeature } from 'jest-cucumber';
@@ -19,7 +22,7 @@ defineFeature(feature, test => {
 
     when('all the events are loaded', () => {
       AppWrapper.update();
-      expect(AppWrapper.find('.Event')).toHaveLength(mockEvents.events.length);
+      expect(AppWrapper.find('.event')).toHaveLength(mockEvents.events.length);
     });
 
     then('all the event elements are collapsed and the user isn\'t able to see their details', () => {
@@ -35,15 +38,15 @@ defineFeature(feature, test => {
 
     and('all the events are loaded', () => {
       AppWrapper.update();
-      expect(AppWrapper.find('.Event')).toHaveLength(mockEvents.events.length);
+      expect(AppWrapper.find('.event')).toHaveLength(mockEvents.events.length);
     });
 
     when('the user clicks Show details button of the event', () => {
-      AppWrapper.find('.Event .details-btn').at(0).simulate('click');
+      AppWrapper.find('.event .details-btn').at(0).simulate('click');
     });
 
     then('the event description section expands to reveal all the event details', () => {
-      expect(AppWrapper.find('.Event .extra')).toHaveLength(1);
+      expect(AppWrapper.find('.event .extra')).toHaveLength(1);
     });
   });
 
@@ -55,16 +58,16 @@ defineFeature(feature, test => {
 
     and('the user expanded event\'s details', () => {
       AppWrapper.update();
-      AppWrapper.find('.Event .details-btn').at(0).simulate('click');
-      expect(AppWrapper.find('.Event .extra')).toHaveLength(1);
+      AppWrapper.find('.event .details-btn').at(0).simulate('click');
+      expect(AppWrapper.find('.event .extra')).toHaveLength(1);
     });
 
     when('the user clicks Hide details button', () => {
-      AppWrapper.find('.Event .details-btn').at(0).simulate('click');
+      AppWrapper.find('.event .details-btn').at(0).simulate('click');
     });
 
     then('the event description collapses', () => {
-      expect(AppWrapper.find('.Event .extra')).toHaveLength(0);
+      expect(AppWrapper.find('.event .extra')).toHaveLength(0);
     });
   });
 });

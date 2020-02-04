@@ -60,7 +60,8 @@ input[type="text"], input[type="number"] {
   background-color: #BCDCDB;
 }
 
-.Event {
+/*changed .Event to .event*/
+.event {
   padding: 10px 10px 20px;
   margin-bottom: 10px;
   text-align: left;

@@ -1,3 +1,5 @@
+//changed E to e. May need to change it back if it overcounts.
+
 import React from 'react';
 import { mount } from 'enzyme';
 import { loadFeature, defineFeature } from 'jest-cucumber';
@@ -20,7 +22,7 @@ defineFeature(feature, test => {
 
     then('the maximum of 32 events will be displayed', () => {
       AppWrapper.update();
-      expect((AppWrapper.find('.Event')).length).toBeLessThanOrEqual(32);
+      expect((AppWrapper.find('.event')).length).toBeLessThanOrEqual(32);
     });
   });
 
@@ -37,7 +39,7 @@ defineFeature(feature, test => {
 
     then('the maximum of specified number of events will be displayed', () => {
       const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-      expect(NumberOfEventsWrapper.state('number')).toBe(32);
+      expect(NumberOfEventsWrapper.state('number')).toBe(32); {/*why not 5?*/}
     });
   });
 });
