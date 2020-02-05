@@ -42,6 +42,12 @@ async function getEvents(lat, lon, page) {
     return mockEvents.events;
   }
 
+  if (!navigator.onLine) {
+    this.setState({ infoText: 'Please note that you are currently offline. The displayed events might not be up to date. The search feature has also been disabled.' })
+    const events = localStorage.getItem('lastEvents');
+    return JSON.parse(events);
+  }
+
   const token = await getAccessToken();
 
   if (token) {
@@ -59,9 +65,12 @@ async function getEvents(lat, lon, page) {
     }
     const result = await axios.get(url);
     const events = result.data.events;
+      if (events.length) { // Check if the events exist
+        localStorage.setItem('lastEvents', JSON.stringify(events));
+      }
+
     return events;
   }
-
 };
 
 async function getAccessToken(){
