@@ -7,7 +7,12 @@ describe('show/hide an event details', () => {
   let browser;
   let page;
   beforeAll(async () => {
-    browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        args: [
+          'no-sandbox',
+          'disable-setuid-sandbox',
+        ]
+      });
     page = await browser.newPage();
     await page.goto('http://localhost:3000/');
     await page.waitForSelector('.event');
