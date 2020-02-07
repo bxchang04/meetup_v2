@@ -20,7 +20,7 @@ defineFeature(feature, test => {
 
     when('all the events are loaded', () => {
       AppWrapper.update();
-      expect(AppWrapper.find('.Event')).toHaveLength(mockEvents.events.length);
+      expect(AppWrapper.find('.event')).toHaveLength(mockEvents.events.length);
     });
 
     then('all the event elements are collapsed and the user isn\'t able to see their details', () => {
@@ -36,7 +36,7 @@ defineFeature(feature, test => {
 
     and('all the events are loaded', () => {
       AppWrapper.update();
-      expect(AppWrapper.find('.Event')).toHaveLength(mockEvents.events.length);
+      expect(AppWrapper.find('.event')).toHaveLength(mockEvents.events.length);
     });
 
     when('the user clicks Show details button of the event', () => {
@@ -44,7 +44,7 @@ defineFeature(feature, test => {
     });
 
     then('the event description section expands to reveal all the event details', () => {
-      expect(AppWrapper.find('.Event .extra')).toHaveLength(1);
+      expect(AppWrapper.find('.event .event__Details')).toHaveLength(1);
     });
   });
 
