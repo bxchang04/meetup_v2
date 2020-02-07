@@ -10,36 +10,36 @@ import { mockEvents } from '../mock-events';
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
-  test('If user hasn’t specified a number, 32 is the default number.', ({ given, when, then }) => {
-    given('the user did not specify a number of events being shown', () => {
+  test('When user hasn\'t specified event number 32 is the default number', ({ given, when, then }) => {
+    given('user hasn\'t specified the number of events', () => {
 
     });
 
     let AppWrapper;
 
-    when('app loaded', () => {
+    when('the user opens the app', () => {
       AppWrapper = mount(<App />);
     });
 
-    then('the default number of shown events is 32', () => {
+    then('the maximum of 32 events will be displayed', () => {
       AppWrapper.update();
       expect((AppWrapper.find('.event')).length).toBeLessThanOrEqual(32);
     });
   });
 
-  test('User can change the number of events they want to see.', ({ given, when, then }) => {
+  test('User can change the number of events they want to see', ({ given, when, then }) => {
     let AppWrapper;
 
-    given('the list of elements has been loaded and the user did not specify a number of events he wants to see', () => {
+    given('user opened the app', () => {
       AppWrapper = mount(<App />);
     });
 
-    when('the user specified a number', () => {
+    when('the user specified the number of events', () => {
       const numberOfEvents = { target: { value: 13 } };
       AppWrapper.find('.numberOfEvents').simulate('change', numberOfEvents);
     });
 
-    then('the maximum of events listed should be the specified number', () => {
+    then('the maximum of specified number of events will be displayed', () => {
       const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
       NumberOfEventsWrapper.setState({ numberOfEvents: 13 });
       expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(13);
