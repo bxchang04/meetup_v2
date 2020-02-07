@@ -1,3 +1,6 @@
+//changed E to e
+//details-btn in App.js has been removed
+
 import React from 'react';
 import App from '../App';
 import { loadFeature, defineFeature } from 'jest-cucumber';
@@ -40,11 +43,11 @@ defineFeature(feature, test => {
       expect(AppWrapper.find('.event')).toHaveLength(mockEvents.events.length);
     });
 
-    when('the user clicks the button „show Details“', () => {
-      AppWrapper.find('.event .details-btn').at(0).simulate('click')
+    when('the user clicks Show details button of the event', () => {
+      AppWrapper.find('.event .details-btn').at(0).simulate('click');
     });
 
-    then('the event element should expand and show more information', () => {
+    then('the event description section expands to reveal all the event details', () => {
       expect(AppWrapper.find('.event .event__Details')).toHaveLength(1);
     });
   });
@@ -52,21 +55,21 @@ defineFeature(feature, test => {
   test('User can collapse an event to hide its details', ({ given, and, when, then }) => {
     let AppWrapper;
 
-    given('app loaded', () => {
+    given('the app is loaded', () => {
       AppWrapper = mount(<App />);
     });
 
-    and('event element is expanded and shows details', () => {
+    and('And the user expanded event\'s details', () => {
       AppWrapper.update();
       AppWrapper.find('.event .details-btn').at(0).simulate('click');
       expect(AppWrapper.find('.event .event__Details')).toHaveLength(1);
     });
 
-    when('the user clicks the „hide details“ button', () => {
+    when('the user clicks Hide details button', () => {
       AppWrapper.find('.event .details-btn').at(0).simulate('click');
     });
 
-    then('the event element details should collapse', () => {
+    then('Then the event description collapses', () => {
       expect(AppWrapper.find('.event .event__Details')).toHaveLength(0);
     });
   });
