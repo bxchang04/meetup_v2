@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 
 class Event extends Component {
   state = {
-    event: [],
-    showDetails: false
+    expanded: false,
   }
 
-  handleShowDetails = () => {
-    if(this.state.showDetails === false) {
-      this.setState({ showDetails: true });
-    }
-    else {
-      this.setState({ showDetails: false });
-    }
+  onDetailsButtonClicked = () => {
+    this.setState(prevState => ({
+      expanded: !prevState.expanded
+    }));
   }
 
   render() {
@@ -23,14 +19,17 @@ class Event extends Component {
         <div className="event__Overview">
           <p className="event__Overview--name">{this.props.event.name}</p>
           <p className="event__Overview--localDate">{this.props.event.local_date}</p>
-          <button className="details-btn" onClick={() => this.handleShowDetails()}>show details</button>
-          {/*<button onClick={() => this.handleShowDetails()}>show details</button>*/}
+          {/*doesn't show # of people going, like in 4.4 screenshot*/}
+          {/*<button className="details-btn" onClick={() => this.handleShowDetails()}>show details</button>*/}
+          <button onClick={() => this.handleShowDetails()}>show details</button>
         </div>
         {showDetails &&
           <div className="event__Details">
             <p className="event__Details--description">{this.props.event.description}</p>
           </div>
         }
+        <button onClick={this.onDetailsButtonClicked}>Details</button>
+        {/*<button className="details-btn" onClick={this.onDetailsButtonClicked}>Details</button>*/}
       </div>
     );
   }
