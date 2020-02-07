@@ -40,7 +40,7 @@ defineFeature(feature, test => {
     });
 
     when('the user clicks Show details button of the event', () => {
-      AppWrapper.find('.Event .details-btn').at(0).simulate('click');
+      AppWrapper.find('.event .details-btn').at(0).simulate('click');
     });
 
     then('the event description section expands to reveal all the event details', () => {
