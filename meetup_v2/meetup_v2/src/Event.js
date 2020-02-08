@@ -5,19 +5,16 @@ import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer, Cell, Line} from '
 
 class Event extends Component {
   state = {
-    event: [],
-    showDetails: false
+    expanded: false,
   }
 
   handleShowDetails = () => {
-    if(this.state.showDetails === false) {
-      this.setState({ showDetails: true });
-    }
-    else {
-      this.setState({ showDetails: false });
-    }
+    this.setState(prevState => ({
+      expanded: !prevState.expanded
+    }));
   }
 
+<<<<<<< HEAD
   getEventData = () => {
     const {event} = this.props;
     const spotsTaken = event.yes_rsvp_count;
@@ -42,7 +39,52 @@ class Event extends Component {
         <p className="event-count"><span className="label">RSVP: </span>{event.yes_rsvp_count} people are going</p>
         {event.venue &&
           <p className="event-address"><span className="label">Address: </span>{ event.venue.address_1}, {event.venue.city}, {event.group.state ? event.group.state : event.venue.localized_country_name}</p>
+||||||| merged common ancestors
+  render() {
+    const showDetails = this.state.showDetails;
+
+    return(
+      <div className="event">
+        <div className="event__Overview">
+          <p className="event__Overview--name">{this.props.event.name}</p>
+          <p className="event__Overview--localDate">{this.props.event.local_date}</p>
+          {/*doesn't show # of people going, like in 4.4 screenshot*/}
+          {/*<button className="details-btn" onClick={() => this.handleShowDetails()}>show details</button>*/}
+          <button onClick={() => this.handleShowDetails()}>show details</button>
+        </div>
+        {showDetails &&
+          <div className="event__Details">
+            <p className="event__Details--description">{this.props.event.description}</p>
+          </div>
+=======
+  render() {
+    const event = this.props.event;
+    return (
+      <div className="event"> {/*changed from Event*/}
+        <p className="time">{event.local_time} - {event.local_date}</p>
+        <p className="name">{event.name}</p>
+        {event.group && event.group.name && <p className="group-name">Group: {event.group.name}</p>}
+        <p className="going">{event.yes_rsvp_count} people are going</p>
+        {this.state.expanded &&
+          <div className="extra">
+            {event.venue && event.venue.name &&
+              <p className="address">
+                {event.venue.name
+                  + ', ' + event.venue.address_1
+                  + ', ' + event.venue.city
+                  + ', ' + event.venue.localized_country_name
+                }
+              </p>
+            }
+            <div className="description" dangerouslySetInnerHTML={{__html: event.description}} />
+            {/*<div className="description" dangerouslySetInnerHTML={{__html: event.description}} />*/}
+            <p className="visibility">{event.visibility}</p>
+            <a className="link" href={event.link}>Event Link</a>
+            <p className="event__Details--description">{this.props.event.description}</p>
+          </div>
+>>>>>>> master
         }
+<<<<<<< HEAD
         <p className="event-venue"><span className="label">Venue: </span>{event.venue && event.venue.name}</p>
         {this.state.showDetails && (
           <div className="event-details">
@@ -74,6 +116,10 @@ class Event extends Component {
           </div>
         )}
         <button onClick={this.handleShowDetails} className="details-btn">Details</button>
+||||||| merged common ancestors
+=======
+        <button className="details-btn" onClick={this.handleShowDetails}>Details</button>
+>>>>>>> master
       </div>
     );
   }

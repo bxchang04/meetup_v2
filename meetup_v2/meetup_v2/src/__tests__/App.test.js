@@ -48,7 +48,7 @@ describe('<App /> integration', () => {
     expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, null, 1);
     AppWrapper.unmount();
   });
-  
+
   test('change state after get list of events', async () => {
     const AppWrapper = shallow(<App />);
     AppWrapper.instance().updateEvents(1.1, 1.2);
