@@ -1,17 +1,22 @@
 //study https://github.com/envincebal/meetup/blob/master/src/Event.js
 
-import React, { Component } from 'react';
-import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer, Cell, Line} from 'recharts';
-
+import React, {Component} from "react";
+import {ResponsiveContainer, PieChart, Pie, Legend, Tooltip, Cell, Line} from "recharts";
 class Event extends Component {
-  state = {
-    expanded: false,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showDetails: false
+    }
   }
 
   handleShowDetails = () => {
-    this.setState(prevState => ({
-      expanded: !prevState.expanded
-    }));
+    if (!this.state.showDetails) {
+      this.setState({showDetails: true});
+    } else {
+      this.setState({showDetails: false});
+    }
   }
 
   getEventData = () => {
