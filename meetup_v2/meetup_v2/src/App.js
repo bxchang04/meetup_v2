@@ -17,10 +17,17 @@ class App extends Component {
     page: null,
     defaultCity: '',
     lat: null,
-    lon: null
+    lon: null,
+    warningText: ''
   }
 
   updateEvents = (lat, lon, page) => {
+    if (!navigator.onLine) {
+     this.setState({ warningText: 'No Network Connection! Event list loaded from last session.' });
+    } else {
+      this.setState({ warningText: '' })
+    }
+
     if(lat && lon) {
       getEvents(lat, lon, this.state.page).then(response => this.setState({ events: response, lat, lon }));
     }
