@@ -6,17 +6,10 @@
   "dependencies": {
     "atatus-js": "^4.0.4",
     "axios": "^0.19.2",
-<<<<<<< HEAD
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "moment": "^2.24.0",
     "puppeteer": "^2.1.0",
-||||||| merged common ancestors
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "puppeteer": "^2.1.0",
-=======
->>>>>>> master
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
