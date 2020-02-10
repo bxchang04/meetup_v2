@@ -9,10 +9,6 @@ import {WarningAlert} from "./Alert";
 
 class App extends Component {
 
-  componentDidMount() {
-    getEvents().then(response => this.setState({ events: response }));
-  }
-
   state = {
     events: [],
     page: null,
@@ -22,13 +18,18 @@ class App extends Component {
     warningText: ''
   }
 
-  updateEvents = (lat, lon, page) => {
-    if (!navigator.onLine) {
-     this.setState({ warningText: 'No internet connection! Event list loaded from last session.' });
-    } else {
-      this.setState({ warningText: '' })
-    }
+  componentDidMount() {
+    getEvents().then(response => this.setState({ events: response }));
 
+    if (!navigator.onLine) {
+      this.setState({warningText: 'Note: The app is offline; information shown may not be up to date.'});
+    } else {
+      this.setState({warningText: ''});
+    };
+    this.updateEvents(undefined, undefined, 32);
+  };
+
+  updateEvents = (lat, lon, page) => {
     if(lat && lon) {
       getEvents(lat, lon, this.state.page).then(response => this.setState({ events: response, lat, lon }));
     }
