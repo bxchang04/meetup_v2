@@ -7,20 +7,29 @@ import NumberOfEvents from './NumberOfEvents';
 import { getEvents } from './api';
 import moment from 'moment';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import {WarningAlert} from "./Alert";
 
 class App extends Component {
-
-  componentDidMount() {
-    getEvents().then(response => this.setState({ events: response }));
-  }
 
   state = {
     events: [],
     page: null,
     defaultCity: '',
     lat: null,
-    lon: null
+    lon: null,
+    warningText: ''
   }
+
+  componentDidMount() {
+    getEvents().then(response => this.setState({ events: response }));
+
+    if (!navigator.onLine) {
+      this.setState({warningText: 'Note: The app is offline; information shown may not be up to date.'});
+    } else {
+      this.setState({warningText: ''});
+    };
+    this.updateEvents(undefined, undefined, 32);
+  };
 
   updateEvents = (lat, lon, page) => {
     if(lat && lon) {
@@ -61,6 +70,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <WarningAlert text={this.state.warningText} />
         <CitySearch updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} numberOfEvents={this.state.events.length} lat={this.state.lat} lon={this.state.lon} />
 
