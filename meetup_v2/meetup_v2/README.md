@@ -1,3 +1,11 @@
+View events at a glance and in detail in this single page progressive application featuring AWS Auth Server and data visualizations.
+
+Framework: React.js
+
+Methodology: Test-driven development (TDD)
+
+>Link: https://bxchang04.github.io/meetup_v2
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
